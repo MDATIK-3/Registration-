@@ -18,16 +18,18 @@ $dpassword = "nqkVFEYCdNWaX9Ud1kx4";
 $dbname = "bjqhjj2wffm0vlsxosod";
 
 $conn = new mysqli($servername, $dusername, $dpassword, $dbname);
-
+// echo"$conn";
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
-
-if ($conn->query($sql) === TRUE) {
+$result = $conn->query($sql);
+if ($result === TRUE) {
     echo "Form submitted successfully!";
+    echo $name.$email.$password;
+    echo $conn->error;
 } else {
     echo "Error submitting form: " . $conn->error;
 }
